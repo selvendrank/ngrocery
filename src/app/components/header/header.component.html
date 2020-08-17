@@ -1,0 +1,20 @@
+<mat-toolbar color="primary" class="example-toolbar">
+	<!-- <button mat-icon-button (click)="isExpanded = !isExpanded"> -->
+	<!-- <button mat-icon-button id="menu" (click)="navService.openNav()"> -->
+	<button mat-icon-button id="menu" (click)="onToggleSidenav()">
+
+		<mat-icon>menu</mat-icon>
+	</button>
+	<h1 class="example-app-name">Niral Grocery</h1>
+
+	<div fxLayout="row" fxShow="false" fxShow.gt-sm>
+		<button mat-button routerLink="/login" *ngIf="!isAuthenticated">
+			<mat-icon>power_settings_new</mat-icon>
+			Login
+		</button>
+		<button mat-button *ngIf="isAuthenticated" (click)="logout()">
+			<mat-icon>exit_to_app</mat-icon>
+			Logout
+		</button>
+	</div>
+</mat-toolbar>

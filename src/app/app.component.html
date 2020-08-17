@@ -1,0 +1,63 @@
+<div *ngIf="isAuthenticated">
+  <app-header (toggle)="onToggle($event)"></app-header>
+  <mat-toolbar color="primary" class="expanded-toolbar">
+
+    <span>
+      <button mat-button routerLink="/">{{title}}</button>
+      <button mat-button routerLink="/">
+        <mat-icon>home</mat-icon>
+      </button>
+    </span>
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <button mat-button routerLink="/login" *ngIf="!isAuthenticated">
+        <mat-icon>power_settings_new</mat-icon>
+        Login
+      </button>
+      <button mat-button *ngIf="isAuthenticated" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        Logout
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+<div *ngIf="!isAuthenticated">
+  <mat-toolbar color="primary" class="expanded-toolbar">
+    <span>
+      <button mat-button routerLink="/">{{title}}</button>
+    </span>
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <button mat-button routerLink="/login" *ngIf="!isAuthenticated">
+        <mat-icon>power_settings_new</mat-icon>
+        Login
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+
+
+
+<router-outlet></router-outlet>
+
+<div *ngIf="isAuthenticated">
+  <!-- <h1>{{title}}</h1>
+<nav>
+  <a routerLink="/products">Products</a>
+</nav>
+<router-outlet></router-outlet> -->
+
+  <app-nav></app-nav>
+
+  <div class="mat-app-background basic-container">
+    <app-header (toggle)="onToggle($event)"></app-header>
+    <!-- <app-left-navigation [expanded]="isExpanded" >loading</app-left-navigation> -->
+    <mat-sidenav-container class="example-container" autosize>
+      <app-navigation [expanded]="isExpanded">loading</app-navigation>
+      <div class="example-sidenav-content">
+        <!-- <app-products></app-products> -->
+        <!-- <router-outlet></router-outlet> -->
+
+      </div>
+    </mat-sidenav-container>
+  </div>
+  <span class="version-info">Current build: 5.0.0-rc.3-05d726d</span>
+</div>

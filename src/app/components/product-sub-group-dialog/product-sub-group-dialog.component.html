@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Product Group" aria-label="Number" matInput [formControl]="productGroup"
+            [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.masterID">
+                {{option.masterName}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Sub Group Name" formControlName="masterName">
+    </mat-form-field>
+    <!-- <mat-form-field>
+        <mat-select placeholder="Select category" formControlName="category">
+            <mat-option value="BEGINNER"> Beginner</mat-option>
+            <mat-option value="INTERMEDIATE"> Intermediate</mat-option>
+            <mat-option value="ADVANCED"> Advanced</mat-option>
+        </mat-select>
+    </mat-form-field> -->
+    <!-- <mat-form-field>
+        <input matInput [matDatepicker]="myDatepicker" formControlName="releasedAt">
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker">
+        </mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field> -->
+    <mat-form-field>
+        <input matInput placeholder="Short Name" formControlName="shortname">
+
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()"> Close </button>
+    <button class="mat-raised-button mat-primary" (click)="save()"> Save </button>
+
+</mat-dialog-actions>

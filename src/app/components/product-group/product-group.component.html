@@ -1,0 +1,22 @@
+<!-- <div class="product-container">
+
+</div> -->
+
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+  <mat-grid-list cols="1" rowHeight="1000px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <app-card title="Latest Orders">
+        <mat-table #table [dataSource]="productGroups" matSort class="mat-elevation-z8">
+          <ng-container matColumnDef="{{column.id}}" *ngFor="let column of columnNames">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> {{column.value}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[column.id]}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+        </mat-table>
+      </app-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
